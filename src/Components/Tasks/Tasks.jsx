@@ -1,5 +1,3 @@
-
-
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -10,8 +8,13 @@ import { BiTask } from "react-icons/bi";
 import AllTasks from "./AllTasks";
 import useTasks from "../Hooks/useTasks";
 const Tasks = () => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
-  const {user} = useContext(AuthContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+  const { user } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [, refetch] = useTasks();
   // Function to handle form submission
@@ -33,7 +36,7 @@ const Tasks = () => {
       if (res.data.insertedId) {
         toast.success("Task added successfully!");
         reset();
-        refetch()
+        refetch();
         setIsOpen(false); // Close modal after successful submission
       }
     } catch (error) {
@@ -49,23 +52,27 @@ const Tasks = () => {
         <p className="text-2xl md:text-4xl lg:text-6xl font-bold">
           <FaTasks />
         </p>
-        <p className="text-2xl md:text-4xl lg:text-6xl font-bold">Track Your Task</p>
+        <p className="text-2xl md:text-4xl lg:text-6xl font-bold">
+          Track Your Task
+        </p>
       </div>
 
       {/* Add Task Button */}
       <div className="text-center mb-6 flex justify-center">
-       
         <button
           onClick={() => setIsOpen(true)}
           className="bg-gray-800 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-gray-700 transition-all flex items-center gap-3"
         >
-         <p> <BiTask className="font-bold" /></p>
+          <p>
+            {" "}
+            <BiTask className="font-bold" />
+          </p>
           Add Task
         </button>
       </div>
 
       <div className="mt-10 ">
-          <AllTasks/>
+        <AllTasks />
       </div>
 
       {/* Modal */}
@@ -76,43 +83,69 @@ const Tasks = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               {/* Title Input */}
               <div>
-                <label className="block text-lg font-medium text-gray-700">Title (max 50 characters)</label>
+                <label className="block text-lg font-medium text-gray-700">
+                  Title (max 50 characters)
+                </label>
                 <input
                   type="text"
                   placeholder="Enter task title"
                   className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   {...register("title", {
                     required: "Title is required",
-                    maxLength: { value: 50, message: "Title must be less than 50 characters" },
+                    maxLength: {
+                      value: 50,
+                      message: "Title must be less than 50 characters",
+                    },
                   })}
                 />
-                {errors.title && <p className="text-red-600 text-sm">{errors.title.message}</p>}
+                {errors.title && (
+                  <p className="text-red-600 text-sm">{errors.title.message}</p>
+                )}
               </div>
 
               {/* Description Input */}
               <div>
-                <label className="block text-lg font-medium text-gray-700">Description (max 200 characters)</label>
+                <label className="block text-lg font-medium text-gray-700">
+                  Description (max 200 characters)
+                </label>
                 <textarea
                   placeholder="Enter task description (optional)"
                   rows="4"
                   className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  {...register("description", { maxLength: { value: 200, message: "Description must be less than 200 characters" } })}
+                  {...register("description", {
+                    maxLength: {
+                      value: 200,
+                      message: "Description must be less than 200 characters",
+                    },
+                  })}
                 />
-                {errors.description && <p className="text-red-600 text-sm">{errors.description.message}</p>}
+                {errors.description && (
+                  <p className="text-red-600 text-sm">
+                    {errors.description.message}
+                  </p>
+                )}
               </div>
 
               {/* Category Select */}
               <div>
-                <label className="block text-lg font-medium text-gray-700">Category</label>
+                <label className="block text-lg font-medium text-gray-700">
+                  Category
+                </label>
                 <select
                   className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  {...register("category", { required: "Category is required" })}
+                  {...register("category", {
+                    required: "Category is required",
+                  })}
                 >
                   <option value="To-Do">To-Do</option>
                   <option value="In Progress">In Progress</option>
                   <option value="Done">Done</option>
                 </select>
-                {errors.category && <p className="text-red-600 text-sm">{errors.category.message}</p>}
+                {errors.category && (
+                  <p className="text-red-600 text-sm">
+                    {errors.category.message}
+                  </p>
+                )}
               </div>
 
               {/* Form Buttons */}
