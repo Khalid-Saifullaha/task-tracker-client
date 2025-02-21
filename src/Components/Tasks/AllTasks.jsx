@@ -77,7 +77,7 @@ const AllTasks = () => {
         // Update all items in the column with new sequential orders
         const updatePromises = items.map((task, index) => {
           return axios.put(
-            `http://localhost:5000/tasks/${task._id}?addedBy=${user.email}`,
+            `https://task-tracker-server-iota.vercel.app/tasks/${task._id}?addedBy=${user.email}`,
             {
               order: index,
               category: sourceCategory,
@@ -120,7 +120,7 @@ const AllTasks = () => {
 
         // Update moved task category and order
         await axios.put(
-          `http://localhost:5000/tasks/${draggableId}?addedBy=${user.email}`,
+          `https://task-tracker-server-iota.vercel.app/tasks/${draggableId}?addedBy=${user.email}`,
           {
             category: destinationCategory,
             order: destination.index,
@@ -131,7 +131,7 @@ const AllTasks = () => {
         // Update orders for source list
         const sourceUpdates = sourceItems.map((task, index) => {
           return axios.put(
-            `http://localhost:5000/tasks/${task._id}?addedBy=${user.email}`,
+            `https://task-tracker-server-iota.vercel.app/tasks/${task._id}?addedBy=${user.email}`,
             {
               order: index,
               category: sourceCategory,
@@ -143,7 +143,7 @@ const AllTasks = () => {
         // Update orders for destination list
         const destUpdates = destItems.map((task, index) => {
           return axios.put(
-            `http://localhost:5000/tasks/${task._id}?addedBy=${user.email}`,
+            `https://task-tracker-server-iota.vercel.app/tasks/${task._id}?addedBy=${user.email}`,
             {
               order: index,
               category: destinationCategory,

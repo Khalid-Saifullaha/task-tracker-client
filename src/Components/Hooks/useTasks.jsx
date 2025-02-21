@@ -11,11 +11,14 @@ const useTasks = () => {
     queryFn: async () => {
       if (!user?.email) return [];
 
-      const res = await axios.get(`http://localhost:5000/tasks`, {
-        params: {
-          addedBy: user.email,
-        },
-      });
+      const res = await axios.get(
+        `https://task-tracker-server-iota.vercel.app/tasks`,
+        {
+          params: {
+            addedBy: user.email,
+          },
+        }
+      );
       console.log("Fetched tasks for user:", user.email, res.data); // Debug log
       return res.data;
     },

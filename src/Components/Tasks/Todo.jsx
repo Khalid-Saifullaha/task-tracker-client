@@ -32,10 +32,13 @@ const Todo = ({ tasks, refetch }) => {
   // Handle updating the task
   const handleUpdate = () => {
     axios
-      .put(`http://localhost:5000/tasks/${selectedTask._id}`, {
-        title: updatedTitle,
-        description: updatedDescription,
-      })
+      .put(
+        `https://task-tracker-server-iota.vercel.app/tasks/${selectedTask._id}`,
+        {
+          title: updatedTitle,
+          description: updatedDescription,
+        }
+      )
       .then((res) => {
         toast.success("Task updated successfully");
         refetch(); // Refetch tasks to reflect the updated task
@@ -49,7 +52,7 @@ const Todo = ({ tasks, refetch }) => {
   //   delete
   const handleDelete = (taskId) => {
     axios
-      .delete(`http://localhost:5000/tasks/${taskId}`)
+      .delete(`https://task-tracker-server-iota.vercel.app/tasks/${taskId}`)
       .then((res) => {
         refetch();
         toast.success("Task deleted successfully");

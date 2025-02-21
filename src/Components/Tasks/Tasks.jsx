@@ -32,7 +32,10 @@ const Tasks = () => {
     };
 
     try {
-      const res = await axios.post("http://localhost:5000/tasks", taskData);
+      const res = await axios.post(
+        "https://task-tracker-server-iota.vercel.app/tasks",
+        taskData
+      );
       if (res.data.insertedId) {
         toast.success("Task added successfully!");
         reset();
