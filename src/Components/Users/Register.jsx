@@ -69,10 +69,7 @@ const Register = () => {
               };
 
               axios
-                .post(
-                  "https://task-tracker-server-iota.vercel.app/users",
-                  userInfo
-                )
+                .post("https://track-server-dun.vercel.app//users", userInfo)
                 .then((res) => {
                   if (res.data.insertedId) {
                     toast.success("Registration Successful!");

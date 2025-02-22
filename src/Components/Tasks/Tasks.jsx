@@ -33,7 +33,7 @@ const Tasks = () => {
 
     try {
       const res = await axios.post(
-        "https://task-tracker-server-iota.vercel.app/tasks",
+        "https://track-server-dun.vercel.app//tasks",
         taskData
       );
       if (res.data.insertedId) {

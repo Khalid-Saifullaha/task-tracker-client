@@ -6,9 +6,7 @@ import { FaTasks } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-  
-
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className=" min-h-screen flex items-center justify-center bg-white">
@@ -17,17 +15,17 @@ const HomePage = () => {
         <motion.h1
           className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-gray-800 md:mt-6 mt-0"
           style={{
-            textShadow: "2px 2px 6px #ffffff", 
+            textShadow: "2px 2px 6px #ffffff",
           }}
-          initial={{ opacity: 1 }} 
+          initial={{ opacity: 1 }}
           transition={{
             duration: 4,
             repeat: Infinity,
             repeatType: "reverse",
           }}
           whileHover={{
-            x: [-3, 3, -3, 3, 0], 
-            transition: { duration: 0.3, repeat: 3 }, 
+            x: [-3, 3, -3, 3, 0],
+            transition: { duration: 0.3, repeat: 3 },
           }}
         >
           Welcome to Task Tracker
@@ -63,7 +61,7 @@ const HomePage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.8 }}
-          onClick={()=> navigate("/tasks")}
+          onClick={() => navigate("/tasks")}
         >
           <FaTasks /> Set Tasks
         </motion.button>

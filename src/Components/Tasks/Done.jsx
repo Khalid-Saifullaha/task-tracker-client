@@ -28,13 +28,10 @@ const Done = ({ tasks, refetch }) => {
 
   const handleUpdate = () => {
     axios
-      .put(
-        `https://task-tracker-server-iota.vercel.app/tasks/${selectedTask._id}`,
-        {
-          title: updatedTitle,
-          description: updatedDescription,
-        }
-      )
+      .put(`https://track-server-dun.vercel.app//tasks/${selectedTask._id}`, {
+        title: updatedTitle,
+        description: updatedDescription,
+      })
       .then(() => {
         toast.success("Task updated successfully");
         refetch();
@@ -47,7 +44,7 @@ const Done = ({ tasks, refetch }) => {
 
   const handleDelete = (taskId) => {
     axios
-      .delete(`https://task-tracker-server-iota.vercel.app/tasks/${taskId}`)
+      .delete(`https://track-server-dun.vercel.app//tasks/${taskId}`)
       .then(() => {
         refetch();
         toast.success("Task deleted successfully");
@@ -71,10 +68,9 @@ const Done = ({ tasks, refetch }) => {
 
     try {
       const loadingToast = toast.loading("Reordering tasks...");
-      await axios.put(
-        "https://task-tracker-server-iota.vercel.app/tasks/reorder",
-        { tasks: updatedOrder }
-      );
+      await axios.put("https://track-server-dun.vercel.app//tasks/reorder", {
+        tasks: updatedOrder,
+      });
       toast.dismiss(loadingToast);
       toast.success("Tasks reordered successfully");
       refetch();
